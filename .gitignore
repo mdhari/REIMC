@@ -1,0 +1,4 @@
+*.class
+*.apk
+.DS_Store
+trunk/reimc_android/bin
