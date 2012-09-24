@@ -3,6 +3,7 @@
     <wb-module deploy-name="Search2Read_webapp">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent/WEB-INF/lib"/>
         <property name="context-root" value="Search2Read_webapp"/>
         <property name="java-output-path" value="/Search2Read_webapp/build/classes"/>
     </wb-module>
