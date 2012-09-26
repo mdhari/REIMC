@@ -4,7 +4,11 @@ package gash.indexing.stopwords;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashSet;
+
+import edu.sjsu.cme.Logger;
 
 /**
  * Words which have no place in this term-concept mapping are those which
@@ -23,9 +27,21 @@ import java.util.HashSet;
  * 
  */
 public final class StopWordsFile implements StopWords {
+	private static final String TAG = "StopWordsFile";
+	
 	private HashSet<String> list = new HashSet<String>();
 
 	public StopWordsFile(File src) throws Exception {
+		init(src);
+	}
+	
+	/**
+	 * Added for Android
+	 * @author michael
+	 * @param src
+	 * @throws Exception
+	 */
+	public StopWordsFile(InputStream src) throws Exception {
 		init(src);
 	}
 
@@ -72,4 +88,37 @@ public final class StopWordsFile implements StopWords {
 			rdr.close();
 		}
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * Added for Android
+	 * @see gash.indexing.inverted.StopWords#init(java.io.File)
+	 */
+	@Override
+	public void init(InputStream is) throws Exception {
+		//Logger.log(TAG,""+is);
+		if (is == null)
+			return;
+
+		list.clear();
+		// MH: Don't worry about error handling for now
+//		if (!swf.exists())
+//			throw new RuntimeException("File not found: " + swf.getAbsolutePath());
+
+		BufferedReader rdr = null;
+		try {
+			rdr = new BufferedReader(new InputStreamReader(is));
+			String raw = rdr.readLine();
+			while (raw != null) {
+				if (!raw.startsWith("#"))
+					list.add(raw.trim().toLowerCase());
+				raw = rdr.readLine();
+			}
+		} finally {
+			rdr.close();
+		}
+		
+		Logger.log(TAG, "list size: " + list.size());
+	}
+	
 }

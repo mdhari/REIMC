@@ -181,7 +181,7 @@ public class CostModelEngine {
 
 		int batteryPct = (int) ((level / (float) scale) * 100);
 
-		Log.d(TAG, "BatteryLevel: " + batteryPct);
+		Logger.log(TAG, "BatteryLevel: " + batteryPct);
 
 		deviceStatusMap.put(BATTERY_METRIC, batteryPct);
 	}
@@ -201,77 +201,77 @@ public class CostModelEngine {
 
 		switch (activeNetwork.getType()) {
 		case (ConnectivityManager.TYPE_WIFI): // WIFI, NETWORK IS ASSUMED HIGH
-			Log.d(TAG, "Network: WIFI");
+			Logger.log(TAG, "Network: WIFI");
 			deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 			break;
 		case (ConnectivityManager.TYPE_MOBILE): { // Need to sniff out type
 													// (2G,3G,4G)
 			switch (activeNetwork.getSubtype()) {
 			case TelephonyManager.NETWORK_TYPE_1xRTT:
-				Log.d(TAG, "Network: 1xRTT ~ 50-100 kbps"); // ~ 50-100 kbps
+				Logger.log(TAG, "Network: 1xRTT ~ 50-100 kbps"); // ~ 50-100 kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_LOW);
 				break;
 			case TelephonyManager.NETWORK_TYPE_CDMA:
-				Log.d(TAG, "Network: CDMA ~ 14-64 kbps"); // ~ 14-64 kbps
+				Logger.log(TAG, "Network: CDMA ~ 14-64 kbps"); // ~ 14-64 kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_LOW);
 				break;
 			case TelephonyManager.NETWORK_TYPE_EDGE:
-				Log.d(TAG, "Network: EDGE ~ 50-100 kbps"); // ~ 50-100 kbps
+				Logger.log(TAG, "Network: EDGE ~ 50-100 kbps"); // ~ 50-100 kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_LOW);
 				break;
 			case TelephonyManager.NETWORK_TYPE_EVDO_0:
-				Log.d(TAG, "Network: EVDO_0 ~ 400-1000 kbps"); // ~ 400-1000
+				Logger.log(TAG, "Network: EVDO_0 ~ 400-1000 kbps"); // ~ 400-1000
 																// kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_AVERAGE);
 				break;
 			case TelephonyManager.NETWORK_TYPE_EVDO_A:
-				Log.d(TAG, "Network: EVDO_A ~ 600-1400 kbps"); // ~ 600-1400
+				Logger.log(TAG, "Network: EVDO_A ~ 600-1400 kbps"); // ~ 600-1400
 																// kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_AVERAGE);
 				break;
 			case TelephonyManager.NETWORK_TYPE_GPRS:
-				Log.d(TAG, "Network: GPRS ~ 100 kbps"); // ~ 100 kbps
+				Logger.log(TAG, "Network: GPRS ~ 100 kbps"); // ~ 100 kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_LOW);
 				break;
 			case TelephonyManager.NETWORK_TYPE_HSDPA:
-				Log.d(TAG, "Network: HSDPA ~ 2-14 Mbps"); // ~ 2-14 Mbps
+				Logger.log(TAG, "Network: HSDPA ~ 2-14 Mbps"); // ~ 2-14 Mbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			case TelephonyManager.NETWORK_TYPE_HSPA:
-				Log.d(TAG, "Network: HSPA ~ 700-1700 kbps"); // ~ 700-1700 kbps
+				Logger.log(TAG, "Network: HSPA ~ 700-1700 kbps"); // ~ 700-1700 kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			case TelephonyManager.NETWORK_TYPE_HSUPA:
-				Log.d(TAG, "Network: HSUPA ~ 1-23 Mbps"); // ~ 1-23 Mbps
+				Logger.log(TAG, "Network: HSUPA ~ 1-23 Mbps"); // ~ 1-23 Mbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			case TelephonyManager.NETWORK_TYPE_UMTS:
-				Log.d(TAG, "Network: UMTS ~ 400-7000 kbps"); // ~ 400-7000 kbps
+				Logger.log(TAG, "Network: UMTS ~ 400-7000 kbps"); // ~ 400-7000 kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			// NOT AVAILABLE YET IN API LEVEL 7
 			case TelephonyManager.NETWORK_TYPE_EHRPD:
-				Log.d(TAG, "Network: EHRPD ~ 1-2 Mbps"); // ~ 1-2 Mbps
+				Logger.log(TAG, "Network: EHRPD ~ 1-2 Mbps"); // ~ 1-2 Mbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			case TelephonyManager.NETWORK_TYPE_EVDO_B:
-				Log.d(TAG, "Network: EVDO_B ~ 5 kbps"); // ~ 5 Mbps
+				Logger.log(TAG, "Network: EVDO_B ~ 5 kbps"); // ~ 5 Mbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			case TelephonyManager.NETWORK_TYPE_HSPAP:
-				Log.d(TAG, "Network: HSPAP ~ 10-20 Mbps"); // ~ 10-20 Mbps
+				Logger.log(TAG, "Network: HSPAP ~ 10-20 Mbps"); // ~ 10-20 Mbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			case TelephonyManager.NETWORK_TYPE_IDEN:
-				Log.d(TAG, "Network: IDEN ~ 25 kbps"); // ~25 kbps
+				Logger.log(TAG, "Network: IDEN ~ 25 kbps"); // ~25 kbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_LOW);
 				break;
 			case TelephonyManager.NETWORK_TYPE_LTE:
-				Log.d(TAG, "Network: LTE ~ 10 Mbps"); // ~ 10+ Mbps
+				Logger.log(TAG, "Network: LTE ~ 10 Mbps"); // ~ 10+ Mbps
 				deviceStatusMap.put(NETWORK_METRIC, NETWORK_QUALITY_HIGH);
 				break;
 			default:
-				Log.d(TAG, "Could not detect network");
+				Logger.log(TAG, "Could not detect network");
 				break;
 			}
 			break;
@@ -280,7 +280,7 @@ public class CostModelEngine {
 			break;
 		} // end main switch statement
 
-		Log.d(TAG,
+		Logger.log(TAG,
 				"NETWORK STATE CHANGED TO: "
 						+ deviceStatusMap.get(NETWORK_METRIC));
 

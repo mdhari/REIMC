@@ -31,6 +31,14 @@ public class Document {
 		name = f.getName();
 		date = new Date(f.lastModified());
 	}
+	
+	public Document(String location, String name) {
+
+
+		this.location = location;
+		this.name = name;
+		date = new Date();
+	}
 
 	/**
 	 * collect keywords by frequency

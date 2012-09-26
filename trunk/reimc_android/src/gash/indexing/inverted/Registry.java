@@ -6,10 +6,14 @@ import gash.indexing.stopwords.StopWords;
 import gash.indexing.stopwords.StopWordsFile;
 
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+
+import android.content.Context;
+import android.net.Uri;
 
 public class Registry {
 	public static final String sStopWords = "stop.words.file";
@@ -25,9 +29,22 @@ public class Registry {
 
 	private Loader loader;
 	private Properties conf;
+	private Context context;
 
 	public Registry(Properties conf) {
 		this.conf = conf;
+		setup();
+	}
+
+	/**
+	 * Added for Android
+	 * 
+	 * @author michael
+	 * @param conf
+	 */
+	public Registry(Properties conf, Context context) {
+		this.conf = conf;
+		this.context = context;
 		setup();
 	}
 
@@ -79,14 +96,35 @@ public class Registry {
 			}
 		}
 	}
+	
+	public void register(String src) {
+		if (src == null)
+			return;
+
+		// TODO prevent double registration
+
+		List<Document> docs = loader.load(src);
+		for (Document d : docs) {
+			for (KeyWord kw : d.keywords()) {
+				ArrayList<Document> list = index.get(kw.word);
+				if (list == null) {
+					list = new ArrayList<Document>();
+					index.put(kw.word, list);
+				}
+
+				list.add(d);
+			}
+		}
+	}
 
 	private void setup() {
 		try {
-			File idir = new File(conf.getProperty(sIndexStorage));
+			//File idir = new File(conf.getProperty(sIndexStorage));
 
-			File swf = new File(conf.getProperty(sStopWords));
-			StopWords swords = new StopWordsFile(swf);
-			loader = new Loader(swords);
+			//File swf = new File(conf.getProperty(sStopWords));
+			StopWords swords = new StopWordsFile(context.getAssets().open(
+					conf.getProperty(sStopWords)));
+			loader = new Loader(swords, context);
 		} catch (Exception e) {
 			throw new RuntimeException("Failed to setup registry.", e);
 		}
