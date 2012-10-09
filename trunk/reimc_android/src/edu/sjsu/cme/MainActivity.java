@@ -12,11 +12,14 @@ import java.util.List;
 import java.util.Properties;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -56,6 +59,27 @@ public class MainActivity extends Activity implements
 
 		mResultsListAdapter = new ResultsListViewAdapter(getApplicationContext());
 		mResultsListView.setAdapter(mResultsListAdapter);
+		
+		findViewById(R.id.alarm_service_btn).setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),AlarmService.class);
+				startActivity(intent);
+				
+			}
+			
+		});
+		
+		findViewById(R.id.real_time_graph_btn).setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),GraphActivity.class);
+				startActivity(intent);
+			}
+			
+		});
 		
 		registerLoad();
 	}

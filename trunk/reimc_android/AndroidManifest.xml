@@ -17,22 +17,41 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
-<!--             <meta-data android:name="android.app.default_searchable"
-                   android:value=".SearchableActivity" /> -->
+
+            <!--
+                 <meta-data android:name="android.app.default_searchable"
+                   android:value=".SearchableActivity" />
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--         <activity
+        <!--
+             <activity
             android:name=".SearchableActivity" >
             <intent-filter>
             <action android:name="android.intent.action.SEARCH" />
         </intent-filter>
         <meta-data android:name="android.app.searchable"
                    android:resource="@xml/searchable"/>
-        </activity> -->
+        </activity>
+        -->
+
+        <service
+            android:name=".AlarmService_Service"
+            android:process=":remote" />
+
+        <activity
+            android:name=".AlarmService"
+            android:label="@string/activity_alarm_service" >
+        </activity>
+        <activity
+            android:name=".GraphActivity"
+            android:label="@string/title_activity_graph"
+            android:screenOrientation="sensorLandscape">
+        </activity>
     </application>
 
 </manifest>

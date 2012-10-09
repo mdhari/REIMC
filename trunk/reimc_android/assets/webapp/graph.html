@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Battery Graph</title>
+
+        <script src="./js/jquery-1.8.2.min.js"></script>
+        <script src="./js/highstock-1.2.4.min.js"></script>
+        
+        <script type="text/javascript">
+            
+            function addDataPoint(x,y){
+                console.log(x,y);
+                var x = (new Date()).getTime(), // current time
+                y = Math.round(Math.random() * 100);
+                series.addPoint([x, y], true, true);
+            }
+            
+            $(function() {
+    
+                Highcharts.setOptions({
+                    global : {
+                        useUTC : false
+                    }
+                });
+    
+    
+    console.log("test console.log");
+                // Create the chart
+                window.chart = new Highcharts.StockChart({
+                    chart : {
+                        renderTo : 'container',
+                        events : {
+                            load : function() {
+
+                                // set up the updating of the chart each second
+                                series = this.series[0];
+                                setInterval(function() {
+                                    var x = (new Date()).getTime(), // current time
+                                    y = Math.round(Math.random() * 100);
+                                    addDataPoint(x,y);
+                                }, 1000);
+                            }
+                        }
+                    },
+        
+                    rangeSelector: {
+                        buttons: [{
+                                count: 1,
+                                type: 'minute',
+                                text: '1M'
+                            }, {
+                                count: 5,
+                                type: 'minute',
+                                text: '5M'
+                            }, {
+                                type: 'all',
+                                text: 'All'
+                            }],
+                        inputEnabled: false,
+                        selected: 0
+                    },
+        
+                    title : {
+                        text : 'Live random data'
+                    },
+        
+                    exporting: {
+                        enabled: false
+                    },
+        
+                    series : [{
+                            name : 'Random data',
+                            data : (function() {
+                                // generate an array of random data
+                                var data = [], time = (new Date()).getTime(), i;
+
+                                for( i = -999; i <= 0; i++) {
+                                    data.push([
+                                        time + i * 1000,
+                                        Math.round(Math.random() * 100)
+                                    ]);
+                                }
+                                return data;
+                            })()
+                        }]
+                });
+
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <div id="container"></div>
+
+    </body>
+
+</html>
