@@ -38,8 +38,27 @@
                    android:resource="@xml/searchable"/>
         </activity>
         -->
+        
+                <service android:name=".LocalService" android:stopWithTask="true" />
 
-        <service
+        <activity android:name=".LocalServiceActivities$Controller"
+                android:label="@string/activity_local_service_controller"
+                android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".LocalServiceActivities$Binding"
+                android:label="@string/activity_local_service_binding">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+<!--         <service
             android:name=".AlarmService_Service"
             android:process=":remote" />
 
@@ -47,11 +66,13 @@
             android:name=".AlarmService"
             android:label="@string/activity_alarm_service" >
         </activity>
+        -->
+        
         <activity
             android:name=".GraphActivity"
             android:label="@string/title_activity_graph"
             android:screenOrientation="sensorLandscape">
-        </activity>
+        </activity> 
     </application>
 
 </manifest>

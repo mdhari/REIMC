@@ -60,16 +60,16 @@ public class MainActivity extends Activity implements
 		mResultsListAdapter = new ResultsListViewAdapter(getApplicationContext());
 		mResultsListView.setAdapter(mResultsListAdapter);
 		
-		findViewById(R.id.alarm_service_btn).setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(getApplicationContext(),AlarmService.class);
-				startActivity(intent);
-				
-			}
-			
-		});
+//		findViewById(R.id.alarm_service_btn).setOnClickListener(new OnClickListener(){
+//
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(getApplicationContext(),LocalServiceActivities.Binding.class);
+//				startActivity(intent);
+//				
+//			}
+//			
+//		});
 		
 		findViewById(R.id.real_time_graph_btn).setOnClickListener(new OnClickListener(){
 
