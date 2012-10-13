@@ -1,5 +1,6 @@
 package edu.sjsu.cme;
 
+import edu.sjsu.cme.receivers.BatteryChangeReceiver;
 import gash.indexing.Document;
 import gash.indexing.inverted.Registry;
 
@@ -13,6 +14,7 @@ import java.util.Properties;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -80,6 +82,9 @@ public class MainActivity extends Activity implements
 			}
 			
 		});
+		
+//		IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+//		getApplicationContext().registerReceiver(new BatteryChangeReceiver(), ifilter);
 		
 		registerLoad();
 	}

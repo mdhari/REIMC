@@ -39,7 +39,7 @@
         </activity>
         -->
         
-                <service android:name=".LocalService" android:stopWithTask="true" />
+<!--                 <service android:name=".LocalService" android:stopWithTask="true" />
 
         <activity android:name=".LocalServiceActivities$Controller"
                 android:label="@string/activity_local_service_controller"
@@ -56,7 +56,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
-        </activity>
+        </activity> -->
 
 <!--         <service
             android:name=".AlarmService_Service"
