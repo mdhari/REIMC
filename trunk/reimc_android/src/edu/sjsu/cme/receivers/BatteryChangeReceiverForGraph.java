@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.BatteryManager;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 import edu.sjsu.cme.GraphActivity;
 import edu.sjsu.cme.Logger;
 import edu.sjsu.cme.R;
@@ -41,13 +42,11 @@ public class BatteryChangeReceiverForGraph extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-		int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-
-		int batteryPct = (int) ((level / (float) scale) * 100);
+		long currTime = System.currentTimeMillis();
+		int batteryPct = (int) ((intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) / (float) intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)) * 100);
 		Logger.log(TAG, "onReceive called with battery level "
-				+ (int) ((level / (float) scale) * 100));
-		graphActivity.pushData(String.valueOf(System.currentTimeMillis()),
+				+ batteryPct);
+		graphActivity.pushData(String.valueOf(currTime),
 				String.valueOf(batteryPct));
 
 		boolean mExternalStorageAvailable = false;
@@ -57,8 +56,9 @@ public class BatteryChangeReceiverForGraph extends BroadcastReceiver {
 		if (Environment.MEDIA_MOUNTED.equals(state)) {
 			// We can read and write the media
 			mExternalStorageAvailable = mExternalStorageWriteable = true;
-			writeToExternalFile(String.valueOf(System.currentTimeMillis()),
+			writeToExternalFile(String.valueOf(currTime),
 			String.valueOf(batteryPct));
+			Toast.makeText(context, "REIMC::Battery Level Logged", Toast.LENGTH_SHORT).show();
 			
 		} else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
 			// We can only read the media
@@ -82,9 +82,10 @@ public class BatteryChangeReceiverForGraph extends BroadcastReceiver {
 	        // try to copy it in chunks).  Note that if external storage is
 	        // not currently mounted this will silently fail.
 //	        InputStream is = graphActivity.getResources().openRawResource(R.drawable.balloons);
-	    	pw = new PrintWriter(file);
-	    	pw.append("["+time+","+batteryPct+"],");
-	    	pw.flush();
+	    	pw = new PrintWriter(new FileOutputStream(file,true),true);
+	    	pw.println("["+time+","+batteryPct+"],");
+	    
+	    	
 	    	
 //	        OutputStream os = new FileOutputStream(file);
 //	        byte[] data = new byte[is.available()];
