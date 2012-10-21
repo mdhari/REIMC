@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.BatteryManager;
 import android.os.Environment;
 import android.util.Log;
@@ -44,6 +46,16 @@ public class BatteryChangeReceiverForGraph extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		long currTime = System.currentTimeMillis();
 		int batteryPct = (int) ((intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) / (float) intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)) * 100);
+		ConnectivityManager cm = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		// TelephonyManager tm =
+		// (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+
+		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+		String typeOfNetwork = activeNetwork.getTypeName();
+		
 		Logger.log(TAG, "onReceive called with battery level "
 				+ batteryPct);
 		graphActivity.pushData(String.valueOf(currTime),
@@ -57,7 +69,7 @@ public class BatteryChangeReceiverForGraph extends BroadcastReceiver {
 			// We can read and write the media
 			mExternalStorageAvailable = mExternalStorageWriteable = true;
 			writeToExternalFile(String.valueOf(currTime),
-			String.valueOf(batteryPct));
+			String.valueOf(batteryPct), typeOfNetwork);
 			Toast.makeText(context, "REIMC::Battery Level Logged", Toast.LENGTH_SHORT).show();
 			
 		} else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
@@ -72,7 +84,7 @@ public class BatteryChangeReceiverForGraph extends BroadcastReceiver {
 		}
 	}
 	
-	private void writeToExternalFile(String time,String batteryPct){
+	private void writeToExternalFile(String time,String batteryPct,String typeOfNetwork){
 	    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "datafile.json");
 	    PrintWriter pw = null;
 	    try {
@@ -83,7 +95,7 @@ public class BatteryChangeReceiverForGraph extends BroadcastReceiver {
 	        // not currently mounted this will silently fail.
 //	        InputStream is = graphActivity.getResources().openRawResource(R.drawable.balloons);
 	    	pw = new PrintWriter(new FileOutputStream(file,true),true);
-	    	pw.println("["+time+","+batteryPct+"],");
+	    	pw.println("["+time+","+batteryPct+",\""+typeOfNetwork+"\"],");
 	    
 	    	
 	    	
