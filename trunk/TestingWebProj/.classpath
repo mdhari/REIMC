@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="C:/jerseyJars/jersey-client-1.14.jar"/>
 	<classpathentry kind="lib" path="C:/jerseyJars/jersey-core-1.14.jar"/>
 	<classpathentry kind="lib" path="C:/jerseyJars/jersey-server-1.14.jar"/>
+	<classpathentry kind="lib" path="C:/RX4687DATA/rx4687Jars/mysql-connector-java-5.1.18-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
