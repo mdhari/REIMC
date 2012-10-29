@@ -7,11 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/jerseyJars/asm-3.3.1.jar"/>
-	<classpathentry kind="lib" path="C:/jerseyJars/jersey-client-1.14.jar"/>
-	<classpathentry kind="lib" path="C:/jerseyJars/jersey-core-1.14.jar"/>
-	<classpathentry kind="lib" path="C:/jerseyJars/jersey-server-1.14.jar"/>
-	<classpathentry kind="lib" path="C:/jerseyJars/mysql-connector-java-5.1.22-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
