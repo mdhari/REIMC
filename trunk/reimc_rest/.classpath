@@ -8,5 +8,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/asm-3.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-client-1.14.jar"/>
+	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-core-1.14.jar"/>
+	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-server-1.14.jar"/>
+	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/mysql-connector-java-5.1.22-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-servlet-1.14.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

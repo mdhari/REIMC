@@ -30,7 +30,7 @@ public class DBConnector {
 		try {
 			connection = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/reimc",
-							"root", "1234");
+							"root", "wingzero01");
 
 		} catch (SQLException e2) {
 			System.out.println("Connection Failed! Check output console");
