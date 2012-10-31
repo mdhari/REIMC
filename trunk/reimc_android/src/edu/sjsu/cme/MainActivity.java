@@ -1,5 +1,6 @@
 package edu.sjsu.cme;
 
+import edu.sjsu.cme.mobileclient.MobileLogger;
 import edu.sjsu.cme.receivers.BatteryChangeReceiver;
 import gash.indexing.Document;
 import gash.indexing.inverted.Registry;
@@ -85,7 +86,7 @@ public class MainActivity extends Activity implements
 		
 //		IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 //		getApplicationContext().registerReceiver(new BatteryChangeReceiver(), ifilter);
-		
+		MobileLogger.log(null, null, null);
 		registerLoad();
 	}
 
