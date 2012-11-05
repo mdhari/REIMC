@@ -1,55 +1,53 @@
 package com.data;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.entity.Logentry;
 
 public class DBController {
 
-	Connection con;
-	Statement stmt;
-	
+	private static final String PERSISTENCE_UNIT_NAME = "LogEntry";
+	private static EntityManagerFactory factory;
+	public EntityManager em;
+
 	public DBController()
 	{
-		DBConnector dbConn = new DBConnector();
-		con = dbConn.getConnection();
-		try {
-			stmt = con.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public String addLogEntry(String appName, String logType, String logValue, String phoneNum, String time)
-	{
-		System.out.println("adding: " + appName + "," + logType + "," + logValue + "," + time + "," + phoneNum );
-		int recordNum = 0;
-		PreparedStatement preparedStatement = null;
-				  
-		try {
-		      preparedStatement = con.prepareStatement("insert into  `reimc`.`logentry` (`logEntryId`, `appName`, `logType`, `logValue`, `logPhoneNum`, `logDateTime` ) " +
-		      		"values (default, ?, ?, ?, ?, ?)");
+		/*factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		em = factory.createEntityManager();
 
-		      preparedStatement.setString(1, appName);
-		      preparedStatement.setString(2, logType);
-		      preparedStatement.setString(3, logValue);
-		      preparedStatement.setString(4, phoneNum);
-		      preparedStatement.setString(5, time);
-		      recordNum = preparedStatement.executeUpdate();
-		      
-		      
-		      		      
-		      
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(recordNum == 1)
-			return "SUCCESS";
-		else
-			return "FAILURE";
-			
-			
+		System.out.println("EntityManager" + em.toString());*/
+
+		
+
+	}
+	public String addLogEntry(String appName, String deviceID, String logType, String logValue, String phoneNum, String time)
+	{
+		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		em = factory.createEntityManager();
+
+		System.out.println("EntityManager" + em.toString());
+
+		
+		// Create new log entriy
+	    em.getTransaction().begin();
+	    Logentry aLogentry = new Logentry();
+	    aLogentry.setAppName(appName);
+	    aLogentry.setDeviceId(deviceID);
+	    aLogentry.setLogDateTime(time);
+	    aLogentry.setLogPhoneNum(phoneNum);
+	    aLogentry.setLogType(logType);
+	    aLogentry.setLogValue(logValue);
+	    em.persist(aLogentry);
+	    em.getTransaction().commit();
+	    
+	    System.out.println("Added="+aLogentry);
+	    	
+	    if(aLogentry.getLogEntryId() > 0)
+	    	return "SUCCESS";
+	    else
+	    	return "ERROR";
 	}
 }
