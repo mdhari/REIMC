@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/result_action_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/result_action"
+        tools:context=".ResultsActivity" />
+
+    <Button
+        android:id="@+id/store_locally_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/result_action_prompt"
+        android:layout_centerHorizontal="true"
+        android:text="@string/store_locally" />
+
+    <Button
+        android:id="@+id/store_remotely_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/store_locally_btn"
+        android:text="@string/store_remotely" />
+
+    <Button
+        android:id="@+id/view_data_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/store_remotely_btn"
+        android:layout_centerHorizontal="true"
+        android:text="@string/view_data" />
+
+</RelativeLayout>

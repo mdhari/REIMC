@@ -24,11 +24,13 @@
                  <meta-data android:name="android.app.default_searchable"
                    android:value=".SearchableActivity" />
             -->
-            <intent-filter>
+            <!--
+                 <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <!--
              <activity
@@ -40,8 +42,10 @@
                    android:resource="@xml/searchable"/>
         </activity>
         -->
-        
-<!--                 <service android:name=".LocalService" android:stopWithTask="true" />
+
+
+        <!--
+                     <service android:name=".LocalService" android:stopWithTask="true" />
 
         <activity android:name=".LocalServiceActivities$Controller"
                 android:label="@string/activity_local_service_controller"
@@ -58,9 +62,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
-        </activity> -->
+        </activity>
+        -->
 
-<!--         <service
+
+        <!--
+             <service
             android:name=".AlarmService_Service"
             android:process=":remote" />
 
@@ -69,12 +76,38 @@
             android:label="@string/activity_alarm_service" >
         </activity>
         -->
-        
+
         <activity
             android:name=".GraphActivity"
             android:label="@string/title_activity_graph"
-            android:screenOrientation="sensorLandscape">
-        </activity> 
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name=".LandingActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProfilingActivity"
+            android:label="@string/title_activity_profiling" >
+        </activity>
+        <activity
+            android:name=".ResultsActivity"
+            android:label="@string/title_activity_results" >
+        </activity>
+        <activity
+            android:name=".ViewDataActivity"
+            android:label="@string/title_activity_view_data" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
