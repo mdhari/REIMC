@@ -8,11 +8,21 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/asm-3.3.1.jar"/>
-	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-client-1.14.jar"/>
-	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-core-1.14.jar"/>
-	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-server-1.14.jar"/>
-	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/mysql-connector-java-5.1.22-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/michael/Documents/cmpe295b_masters_project/git/REIMC/trunk/reimc_rest/WebContent/WEB-INF/lib/jersey-servlet-1.14.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-3.3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-client-1.14.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-core-1.14.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-json-1.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-multipart-1.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-1.14.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-servlet-1.14.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.22-bin.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/com.sun.tools.xjc_2.2.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/com.sun.xml.bind_2.2.0.v201004141950.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/eclipselink.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.activation_1.1.0.v201005080500.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.mail_1.4.0.v201005080615.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.persistence_2.0.3.v201010191057.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.xml.bind_2.2.0.v201005080402.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.xml.stream_1.0.1.v201004272200.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
