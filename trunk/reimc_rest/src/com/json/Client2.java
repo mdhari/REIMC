@@ -24,30 +24,22 @@ public class Client2 {
 			WebResource webResource = client
 			   .resource("http://localhost:8080/reimc_rest/bookreader/br/json");
 	 
-			//String input = "{\"singer\":\"Metallica\",\"title\":\"Fade To Black\"}";
-	 
-	
-			String input = "{\"deviceId\":\"ASDF1234\",\"appName\":\"EBookReader\",\"data\":\"[\"{\"timestamp\":\"123456789\",\"logType\":\"Battery\",\"logData\":\"10\"}]\"}";
-			
-			//String input = "{\"deviceId\":\"ASDF1234\",\"appName\":\"EBookReader\"}";
-			
 			Request aRequest = new Request();
-			aRequest.setAppName("testing");
-			aRequest.setDeviceId("deviceTesting");
+			aRequest.setAppName("bookreader");
+			aRequest.setDeviceId("device123");
 			
 			ArrayList<Data> list = new ArrayList<Data>();
 			
 			Data aData = new Data();
-			aData.setLogData("RenData");
-			aData.setLogType("RenDataType");
-			aData.setTimestamp("111456789");
+			aData.setLogData("10");
+			aData.setLogType("battery");
+			aData.setTimestamp("11/09/2012 7:45:20");
+			list.add(aData);
 			
 			Data bData = new Data();
-			bData.setLogData("RenBlogData");
-			bData.setLogType("RenBlogType");
-			bData.setTimestamp("1113456789");
-			
-			list.add(aData);
+			bData.setLogData("5");
+			bData.setLogType("battery");
+			bData.setTimestamp("11/09/2012 7:45:20");
 			list.add(bData);
 			
 			aRequest.setData(list);
