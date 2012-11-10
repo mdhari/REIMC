@@ -47,5 +47,9 @@
     <string name="store_remotely">Store Remotely</string>
     <string name="view_data">View Data</string>
     <string name="title_activity_view_data">ViewDataActivity</string>
+    <string name="title_activity_send_data_to_server">SendDataToServerActivity</string>
+    <string name="default_jsonendpoint">http://localhost:8080/reimc_rest/bookreader/br/json</string>
+    <string name="server_name">Server JSON Endpoint</string>
+    <string name="submit">Submit</string>
 
 </resources>

@@ -86,7 +86,7 @@ public class MainActivity extends Activity implements
 		
 //		IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 //		getApplicationContext().registerReceiver(new BatteryChangeReceiver(), ifilter);
-		MobileLogger.log(null, null, null);
+		//MobileLogger.log(null, null, null);
 		registerLoad();
 	}
 

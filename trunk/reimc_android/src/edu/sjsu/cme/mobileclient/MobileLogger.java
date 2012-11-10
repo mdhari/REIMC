@@ -1,46 +1,39 @@
 package edu.sjsu.cme.mobileclient;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
-import android.provider.Settings.Secure;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 
+import android.content.Context;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.message.BasicNameValuePair;
-
-import edu.sjsu.cme.Logger;
+import android.widget.Toast;
 
 public class MobileLogger {
 	
-	public static void log(String deviceId, String timestamp, String logDesc){
-		
-		new LogTask().execute();
+	public static void log(String serverEndpoint,String jsonStr){
+		new LogTask().execute(serverEndpoint,jsonStr);
 	}
 	
 	static class LogTask extends AsyncTask<String, Void, Void> {
 
 
-	    protected Void doInBackground(String... urls) {
+	    protected Void doInBackground(String... args) {
 	    	AndroidHttpClient aHttpClient = AndroidHttpClient.newInstance("Android");
 			
 			//HttpPost httpPost = new HttpPost("http://localhost/");
-			HttpPost httpPost = new HttpPost("http://192.168.1.68:8080/reimc_rest/bookreader/br/log");
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
-			nameValuePairs.add(new BasicNameValuePair("phoneNum", Secure.ANDROID_ID));
-			nameValuePairs.add(new BasicNameValuePair("logType", "MOBILE"));
-			nameValuePairs.add(new BasicNameValuePair("logValue", "Some value"));
+//			HttpPost httpPost = new HttpPost("http://192.168.1.68:8080/reimc_rest/bookreader/br/log");
+//			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+//			nameValuePairs.add(new BasicNameValuePair("phoneNum", Secure.ANDROID_ID));
+//			nameValuePairs.add(new BasicNameValuePair("logType", "MOBILE"));
+//			nameValuePairs.add(new BasicNameValuePair("logValue", "Some value"));
 			
+	    	HttpPost httpPost = new HttpPost(args[0]);
+	    	
 			try {
-				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+				//httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+				httpPost.setEntity(new StringEntity(args[1]));
 				aHttpClient.execute(httpPost);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -50,10 +43,6 @@ public class MobileLogger {
 			return null;
 	    }
 
-	    protected void onPostExecute(Void feed) {
-	        // TODO: check this.exception 
-	        // TODO: do something with the feed
-	    }
 	 }
 
 }

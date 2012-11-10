@@ -108,6 +108,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SendDataToServerActivity"
+            android:label="@string/title_activity_send_data_to_server" >
+        </activity>
     </application>
 
 </manifest>

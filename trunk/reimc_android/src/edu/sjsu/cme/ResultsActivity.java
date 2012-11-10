@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import edu.sjsu.cme.mobileclient.MobileLogger;
+
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
@@ -55,6 +57,18 @@ public class ResultsActivity extends Activity {
 				Intent intent = new Intent(getApplicationContext(),ViewDataActivity.class);
 				intent.putExtra(ProfilingActivity.JSON_RESULTS,getIntent().getStringExtra(ProfilingActivity.JSON_RESULTS));
 				startActivity(intent);
+			}
+        	
+        });
+        
+        findViewById(R.id.store_remotely_btn).setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),SendDataToServerActivity.class);
+				intent.putExtra(ProfilingActivity.JSON_RESULTS,getIntent().getStringExtra(ProfilingActivity.JSON_RESULTS));
+				startActivity(intent);
+				
 			}
         	
         });

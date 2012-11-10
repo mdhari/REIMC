@@ -21,28 +21,30 @@ public final class R {
         public static final int stat_sample=0x7f020002;
     }
     public static final class id {
-        public static final int action_search=0x7f090015;
+        public static final int action_search=0x7f090017;
         public static final int battery_checkbox=0x7f090002;
-        public static final int bind=0x7f09000f;
-        public static final int data_txt=0x7f09000c;
+        public static final int bind=0x7f090011;
+        public static final int data_txt=0x7f09000e;
         public static final int end_profiling_btn=0x7f090007;
         public static final int graph_webview=0x7f090000;
-        public static final int menu_settings=0x7f090014;
+        public static final int menu_settings=0x7f090016;
         public static final int network_checkbox=0x7f090003;
         public static final int real_time_graph_btn=0x7f090004;
         public static final int result_action_prompt=0x7f090008;
         public static final int results_list_view=0x7f090006;
-        public static final int start=0x7f090011;
-        public static final int start_alarm=0x7f09000d;
+        public static final int send_data_submit_btn=0x7f09000d;
+        public static final int server_edittext=0x7f09000c;
+        public static final int start=0x7f090013;
+        public static final int start_alarm=0x7f09000f;
         public static final int start_profiling_btn=0x7f090001;
         public static final int status_text=0x7f090005;
-        public static final int stop=0x7f090012;
-        public static final int stop_alarm=0x7f09000e;
+        public static final int stop=0x7f090014;
+        public static final int stop_alarm=0x7f090010;
         public static final int store_locally_btn=0x7f090009;
         public static final int store_remotely_btn=0x7f09000a;
-        public static final int unbind=0x7f090010;
+        public static final int unbind=0x7f090012;
         public static final int view_data_btn=0x7f09000b;
-        public static final int word_text=0x7f090013;
+        public static final int word_text=0x7f090015;
     }
     public static final class layout {
         public static final int activity_graph=0x7f030000;
@@ -51,11 +53,12 @@ public final class R {
         public static final int activity_profiling=0x7f030003;
         public static final int activity_results=0x7f030004;
         public static final int activity_searchable=0x7f030005;
-        public static final int activity_view_data=0x7f030006;
-        public static final int alarm_service=0x7f030007;
-        public static final int local_service_binding=0x7f030008;
-        public static final int local_service_controller=0x7f030009;
-        public static final int result_item=0x7f03000a;
+        public static final int activity_send_data_to_server=0x7f030006;
+        public static final int activity_view_data=0x7f030007;
+        public static final int alarm_service=0x7f030008;
+        public static final int local_service_binding=0x7f030009;
+        public static final int local_service_controller=0x7f03000a;
+        public static final int result_item=0x7f03000b;
     }
     public static final class menu {
         public static final int activity_graph=0x7f080000;
@@ -64,7 +67,8 @@ public final class R {
         public static final int activity_profiling=0x7f080003;
         public static final int activity_results=0x7f080004;
         public static final int activity_searchable=0x7f080005;
-        public static final int activity_view_data=0x7f080006;
+        public static final int activity_send_data_to_server=0x7f080006;
+        public static final int activity_view_data=0x7f080007;
     }
     public static final class string {
         public static final int activity_alarm_service=0x7f06000a;
@@ -79,6 +83,7 @@ public final class R {
         public static final int app_label=0x7f060005;
         public static final int app_name=0x7f060000;
         public static final int bind_service=0x7f06001a;
+        public static final int default_jsonendpoint=0x7f06002b;
         public static final int end_profiling=0x7f060021;
         public static final int hello_world=0x7f060001;
         public static final int local_service_binding=0x7f060019;
@@ -93,6 +98,7 @@ public final class R {
         public static final int menu_settings=0x7f060002;
         public static final int result_action=0x7f060025;
         public static final int search_hint=0x7f060006;
+        public static final int server_name=0x7f06002c;
         public static final int start_alarm_service=0x7f06000c;
         public static final int start_profiling=0x7f06001f;
         public static final int start_service=0x7f060017;
@@ -100,12 +106,14 @@ public final class R {
         public static final int stop_service=0x7f060018;
         public static final int store_locally=0x7f060026;
         public static final int store_remotely=0x7f060027;
+        public static final int submit=0x7f06002d;
         public static final int title_activity_graph=0x7f060010;
         public static final int title_activity_landing=0x7f06001e;
         public static final int title_activity_main=0x7f060003;
         public static final int title_activity_profiling=0x7f060020;
         public static final int title_activity_results=0x7f060024;
         public static final int title_activity_searchable=0x7f060004;
+        public static final int title_activity_send_data_to_server=0x7f06002a;
         public static final int title_activity_view_data=0x7f060029;
         public static final int unbind_service=0x7f06001b;
         public static final int view_data=0x7f060028;

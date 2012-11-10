@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/server_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/server_name"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/default_jsonendpoint"
+        tools:context=".SendDataToServerActivity" />
+
+    <Button
+        android:id="@+id/send_data_submit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/server_edittext"
+        android:layout_centerHorizontal="true"
+        android:text="@string/submit" />
+
+</RelativeLayout>
