@@ -16,6 +16,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.data.DBController;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.json.Request;
 
 @Path("/br")
 public class BookReaderAPI {
@@ -57,4 +61,32 @@ public class BookReaderAPI {
 		
 	}
 
+	
+	@Path("/json")
+	@POST
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String newLogEntry( String input ) throws JsonParseException, JsonMappingException, IOException 
+	{
+		ObjectMapper mapper = new ObjectMapper();
+		Request aRequest = mapper.readValue(input, Request.class);
+		
+		System.out.println(aRequest.getAppName() + aRequest.getDeviceId() + aRequest.getData().size());
+		
+		System.out.println("POST JSON call: AppName" + aRequest.getDeviceId() + "Data Length" + aRequest.getData().size());
+		DBController dbController = new DBController();
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		
+		String temp = dbController.addRequestwDataToDB(aRequest);
+		
+		return temp;
+		
+		// dateFormat.format(date)
+		//String temp = dbController.addLogEntry(appName, deviceId, logType, logValue, phoneNum , timeStamp);*/
+		//String temp = dbController.addLogEntry(appName, deviceId, logType, logValue, phoneNum , timeStamp);
+		//return "POST call: Hello BookReader - i will handel log entries =";
+		
+	}
 }

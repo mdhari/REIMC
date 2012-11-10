@@ -1,0 +1,21 @@
+{
+    "deviceId": "ASDF1234",
+    "appName": "EBookReader",
+    "data": [
+        {
+            "timestamp": 123456789,
+            "logType": "Battery",
+            "logData": 10
+        },
+        {
+            "timestamp": 123456789,
+            "logType": "Battery",
+            "logData": 8
+        },
+        {
+            "timestamp": 123456789,
+            "logType": "Battery",
+            "logData": 2
+        }
+    ]
+}

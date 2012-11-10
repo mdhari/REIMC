@@ -12,7 +12,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-client-1.14.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-core-1.14.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-json-1.12.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-multipart-1.9.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-1.14.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-servlet-1.14.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.22-bin.jar"/>
@@ -24,5 +23,8 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.persistence_2.0.3.v201010191057.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.xml.bind_2.2.0.v201005080402.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.xml.stream_1.0.1.v201004272200.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-2.1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-annotations-2.1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.1.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
