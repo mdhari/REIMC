@@ -3,10 +3,14 @@ package com.data;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import org.json.JSONArray;
 
 import com.entity.Logentry;
 import com.json.Data;
@@ -97,6 +101,27 @@ public class DBController {
 		}
 		
 		return "SUUCESS";
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public JSONArray getLogForDeviceId(String deviceId){
+		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		em = factory.createEntityManager();
+		
+		Query q = em.createQuery("select x from Logentry x");
+		List<Logentry> results = (List<Logentry>) q.getResultList ();
+		
+		JSONArray jsonArray = new JSONArray();
+		
+		for(Logentry logEntry:results){
+			JSONArray subJSONArray = new JSONArray();
+			subJSONArray.put(Long.parseLong(logEntry.getLogDateTime()));
+			subJSONArray.put(Long.parseLong(logEntry.getLogValue()));
+			jsonArray.put(subJSONArray);
+		}
+		
+		return jsonArray;
 		
 	}
 	

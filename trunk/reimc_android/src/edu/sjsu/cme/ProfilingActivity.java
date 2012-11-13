@@ -3,8 +3,11 @@ package edu.sjsu.cme;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.sjsu.cme.models.LogData;
 import edu.sjsu.cme.receivers.BatteryChangeReceiver;
 import edu.sjsu.cme.receivers.BatteryChangeReceiverForGraph;
+import edu.sjsu.cme.receivers.NetworkChangeReceiver;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.provider.Settings.Secure;
 import android.app.Activity;
@@ -23,6 +26,7 @@ public class ProfilingActivity extends Activity {
 	public static final String JSON_RESULTS = "jsonResults";
 
 	BatteryChangeReceiver batteryChangeReceiver;
+	NetworkChangeReceiver networkChangeReceiver;
 	
 
 	@Override
@@ -42,8 +46,7 @@ public class ProfilingActivity extends Activity {
 							jsonObject.put("deviceId", Secure.getString(getApplicationContext().getContentResolver(),
 							        Secure.ANDROID_ID));
 							jsonObject.put("appName", "REIMC");
-							jsonObject.put("data",batteryChangeReceiver
-									.getJSONArray());
+							jsonObject.put("data",LogData.jsonDataArray);
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -53,6 +56,7 @@ public class ProfilingActivity extends Activity {
 						if (batteryChangeReceiver != null) {
 							intent.putExtra(JSON_RESULTS,jsonObject.toString());
 						}
+						
 						setResult(RESULT_OK, intent);
 						finish();
 					}
@@ -70,7 +74,12 @@ public class ProfilingActivity extends Activity {
 		// MH: Decided it was easier to let the Android platform broadcast
 		// battery changes
 
-		getIntent().getExtras().getBoolean(LOG_NETWORK, false);
+		if(getIntent().getExtras().getBoolean(LOG_NETWORK, false)){
+			 // Registers BroadcastReceiver to track network connection changes.
+			networkChangeReceiver = new NetworkChangeReceiver();
+	        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+	        getApplicationContext().registerReceiver(networkChangeReceiver, filter);
+		}
 	}
 
 	@Override

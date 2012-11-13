@@ -1,5 +1,8 @@
 package edu.sjsu.cme;
 
+import org.json.JSONArray;
+
+import edu.sjsu.cme.models.LogData;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -47,6 +50,8 @@ public class LandingActivity extends Activity {
 							
 							if(((CheckBox) findViewById(R.id.network_checkbox)).isChecked())
 							intent.putExtra(ProfilingActivity.LOG_NETWORK, true);
+							
+							LogData.jsonDataArray = new JSONArray(); // reset the log data
 							
 							startActivityForResult(intent,PROFILE_REQUEST);
 						}

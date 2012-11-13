@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.sjsu.cme.Logger;
+import edu.sjsu.cme.models.LogData;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -45,7 +46,8 @@ public class BatteryChangeReceiver extends BroadcastReceiver {
 			e.printStackTrace();
 		}
 		
-		dataJsonArray.put(jsonObject);
+		//dataJsonArray.put(jsonObject);
+		LogData.jsonDataArray.put(jsonObject);
 		
 		//Logger.log(TAG, dataJsonArray.toString());
 

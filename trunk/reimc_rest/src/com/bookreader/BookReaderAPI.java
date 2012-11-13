@@ -12,8 +12,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import org.json.JSONArray;
 
 import com.data.DBController;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -89,4 +92,22 @@ public class BookReaderAPI {
 		//return "POST call: Hello BookReader - i will handel log entries =";
 		
 	}
+	
+	@Path("/json")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getDataForDevice(@QueryParam("deviceId") String deviceId)
+	{
+		DBController dbController = new DBController();
+		
+		JSONArray jsonArray = dbController.getLogForDeviceId(deviceId);
+		return jsonArray.toString();
+		
+		// dateFormat.format(date)
+		//String temp = dbController.addLogEntry(appName, deviceId, logType, logValue, phoneNum , timeStamp);*/
+		//String temp = dbController.addLogEntry(appName, deviceId, logType, logValue, phoneNum , timeStamp);
+		//return "POST call: Hello BookReader - i will handel log entries =";
+		
+	}
+	
 }
