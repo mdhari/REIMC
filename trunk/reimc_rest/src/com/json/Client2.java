@@ -33,13 +33,13 @@ public class Client2 {
 			Data aData = new Data();
 			aData.setLogData("10");
 			aData.setLogType("battery");
-			aData.setTimestamp("11/09/2012 7:45:20");
+			aData.setTimestamp("1352948897020");
 			list.add(aData);
 			
 			Data bData = new Data();
 			bData.setLogData("5");
 			bData.setLogType("battery");
-			bData.setTimestamp("11/09/2012 7:45:20");
+			bData.setTimestamp("1352948897020");
 			list.add(bData);
 			
 			aRequest.setData(list);

@@ -1,7 +1,9 @@
 package com.data;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -69,7 +71,8 @@ public class DBController {
 		
 		System.out.println("EntityManager" + em.toString());
 		
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
+		Calendar calendar;
 		
 		ArrayList<Data> listOfData = new ArrayList<Data>();
 		
@@ -81,6 +84,7 @@ public class DBController {
 		
 		while(it.hasNext())
 		{
+			calendar  = Calendar.getInstance();
 			em.getTransaction().begin();
 
 			logEntry = new Logentry();
@@ -88,8 +92,10 @@ public class DBController {
 			
 			logEntry.setAppName(aRequest.getAppName());
 			logEntry.setDeviceId(aRequest.getDeviceId());
-			
-			logEntry.setLogDateTime(aData.getTimestamp());
+			System.out.println("milisec" + aData.getTimestamp().toString() );
+			calendar.setTimeInMillis(Long.parseLong(aData.getTimestamp().toString()));
+			 
+			logEntry.setLogDateTime(sdf.format(calendar.getTime()));
 			logEntry.setLogType(aData.getLogType());
 			logEntry.setLogValue(aData.getLogData());
 		
