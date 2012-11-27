@@ -38,6 +38,8 @@ public class MobileLogger {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally{
+				aHttpClient.close();
 			}
 			
 			return null;

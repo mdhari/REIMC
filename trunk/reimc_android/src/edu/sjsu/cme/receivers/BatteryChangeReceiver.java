@@ -32,7 +32,7 @@ public class BatteryChangeReceiver extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		//Logger.log(TAG, "onReceive called");
+
 		int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
 		int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 		
@@ -46,13 +46,8 @@ public class BatteryChangeReceiver extends BroadcastReceiver {
 			e.printStackTrace();
 		}
 		
-		//dataJsonArray.put(jsonObject);
 		LogData.jsonDataArray.put(jsonObject);
 		
-		//Logger.log(TAG, dataJsonArray.toString());
-
-		//Logger.log(TAG, "onReceive called with battery level " +(int) ((level / (float) scale) * 100));
-
 	}
 
 }

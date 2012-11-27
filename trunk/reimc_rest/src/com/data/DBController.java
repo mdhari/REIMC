@@ -125,6 +125,23 @@ public class DBController {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public String getRawLogForDeviceId(String deviceId){
+		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		em = factory.createEntityManager();
+		
+		Query q = em.createQuery("select x from Logentry x");
+		List<Logentry> results = (List<Logentry>) q.getResultList ();
+		
+		String retVal = "";
+		for(Logentry logEntry:results){
+			retVal += logEntry.getLogDateTime() + "," + logEntry.getLogValue() + "\n";
+		}
+		
+		return retVal;
+		
+	}
+	
 	public String addLogEntry(String appName, String deviceID, String logType, String logValue, String phoneNum, String time)
 	{
 		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
