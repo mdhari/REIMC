@@ -84,7 +84,7 @@ public class DBController {
 		
 		while(it.hasNext())
 		{
-			calendar  = Calendar.getInstance();
+			//calendar  = Calendar.getInstance();
 			em.getTransaction().begin();
 
 			logEntry = new Logentry();
@@ -92,10 +92,11 @@ public class DBController {
 			
 			logEntry.setAppName(aRequest.getAppName());
 			logEntry.setDeviceId(aRequest.getDeviceId());
-			System.out.println("milisec" + aData.getTimestamp().toString() );
-			calendar.setTimeInMillis(Long.parseLong(aData.getTimestamp().toString()));
+			//System.out.println("milisec" + aData.getTimestamp().toString() );
+			//calendar.setTimeInMillis(Long.parseLong(aData.getTimestamp().toString()));
 			 
-			logEntry.setLogDateTime(sdf.format(calendar.getTime()));
+			//logEntry.setLogDateTime(sdf.format(calendar.getTime()));
+			logEntry.setLogDateTime(aData.getTimestamp().toString());
 			logEntry.setLogType(aData.getLogType());
 			logEntry.setLogValue(aData.getLogData());
 		
