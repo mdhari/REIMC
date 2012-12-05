@@ -149,6 +149,55 @@ public class DBController {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public String getCleanRawLogForDeviceId(String deviceId){
+		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		em = factory.createEntityManager();
+		
+		Query q = em.createQuery("select x from Logentry x");
+		List<Logentry> results = (List<Logentry>) q.getResultList ();
+		
+		Long zero = Long.parseLong((results.get(0).getLogDateTime()));
+		int batteryLevel = Integer.parseInt(results.get(0).getLogValue());
+		Long lastDateTime = Long.parseLong((results.get(0).getLogDateTime()));
+		
+		String retVal = "";
+//		for(Logentry logEntry:results){
+//			if(batteryLevel < Integer.parseInt(logEntry.getLogValue())){
+//				// must of been charged,reset
+//				batteryLevel = Integer.parseInt(logEntry.getLogValue());
+//				zero = Long.parseLong(logEntry.getLogDateTime());
+//			}
+//			
+//			if(batteryLevel > Integer.parseInt(logEntry.getLogValue())){
+//				retVal += lastDateTime-zero + "," + batteryLevel + "\n";
+//				batteryLevel = Integer.parseInt(logEntry.getLogValue());
+//				
+//			}
+//			
+//			lastDateTime = Long.parseLong(logEntry.getLogDateTime());
+//		}
+		
+		for(Logentry logEntry:results){
+			if(Integer.parseInt(logEntry.getLogValue()) == 100){
+				zero = Long.parseLong(logEntry.getLogDateTime());
+				batteryLevel = Integer.parseInt(logEntry.getLogValue());
+			}
+			
+			if(batteryLevel > Integer.parseInt(logEntry.getLogValue())){
+			retVal += lastDateTime-zero + "," + batteryLevel + "\n";
+			batteryLevel = Integer.parseInt(logEntry.getLogValue());
+			
+		}
+		
+		lastDateTime = Long.parseLong(logEntry.getLogDateTime());
+			
+		}
+		
+		return retVal;
+		
+	}
+	
 	public String addLogEntry(String appName, String deviceID, String logType, String logValue, String phoneNum, String time)
 	{
 		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);

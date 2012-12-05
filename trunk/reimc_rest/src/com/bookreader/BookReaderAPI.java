@@ -128,4 +128,22 @@ public class BookReaderAPI {
 		
 	}
 	
+	@Path("/cleancsv")
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getCleanCSVDataForDevice(@QueryParam("deviceId") String deviceId)
+	{
+		DBController dbController = new DBController();
+		
+		String rawLog = dbController.getCleanRawLogForDeviceId(deviceId);
+		
+		return rawLog;
+		
+		// dateFormat.format(date)
+		//String temp = dbController.addLogEntry(appName, deviceId, logType, logValue, phoneNum , timeStamp);*/
+		//String temp = dbController.addLogEntry(appName, deviceId, logType, logValue, phoneNum , timeStamp);
+		//return "POST call: Hello BookReader - i will handel log entries =";
+		
+	}
+	
 }
